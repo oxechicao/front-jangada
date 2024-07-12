@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 export const MOCK_NOTION_CSV = [
   {
     value: 3000,
@@ -17110,10 +17112,14 @@ export const MOCK_NOTION_CSV = [
     name: data.name,
     currentInstallment: data.currentInstallment,
     totalInstallment: data.totalInstallment,
-    lastPaymentDate: new Date(
-      data.lastPaymentDate.split("/").reverse().join("-")
-    ),
-    purchaseDate: new Date(data.purchaseDate.split("/").reverse().join("-")),
+    lastPaymentDate: DateTime.fromFormat(
+      data.lastPaymentDate,
+      "dd/mm/yyyy"
+    ).toISO(),
+    // new Date(
+    //   `${data.lastPaymentDate.split("/").reverse().join("-")} 01:00:00`
+    // ),
+    purchaseDate: DateTime.fromFormat(data.purchaseDate, "dd/mm/yyyy").toISO(),
     finished: data.finished === "Yes",
     createdAt: new Date(data.createdAt),
     updatedAt: new Date(data["Last edited time"]),
