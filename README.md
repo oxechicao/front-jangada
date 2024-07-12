@@ -1,36 +1,147 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Jangada Project
 
-## Getting Started
+- [Jangada Project](#jangada-project)
+  - [Dados](#dados)
+  - [Funcionalidades](#funcionalidades)
+    - [CRUDS](#cruds)
+    - [Actions](#actions)
+    - [Journey](#journey)
 
-First, run the development server:
+## Dados
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```mermaid
+erDiagram
+  EXPENSES {
+    uuid _id
+    string name
+    number value
+    number currentInstallment
+    number totalInstallments
+    date purchaseDate
+    date paymentDate
+    date createdAt
+    date updatedAt
+    uuid[] tags
+  }
+
+  CARD {
+    uuid _id
+    string name
+    uuif idTag FK
+  }
+
+  TAG {
+    uuid _id
+    string name
+    uuid idCategory FK
+  }
+
+  CATEGORY {
+    uuid _id
+    string name
+  }
+
+  CATEGORIES {
+    enum paymentMethod
+    enum paymentForm
+    enum paymentOrigin
+    enum department
+    enum creditCard
+  }
+
+  GOAL {
+    uuid _id
+    uuid idTags FK
+  }
+
+  USER {
+    uuid _id
+    string email
+    string token
+  }
+
+  EXPENSES }|--|{ TAG : "bocado"
+  CATEGORY ||--|| CATEGORIES : "tem um"
+  TAG ||--|{ CATEGORY : "tem várias"
+  CARD ||--|| TAG : "TAG ===     "
+  GOAL }|--|{ TAG : "exceto department"
+
+  USER ||--|{ EXPENSES : "possui"
+  USER ||--|{ CATEGORY : "possui"
+  USER ||--|{ TAG : "possui"
+  USER ||--|{ GOAL : "possui"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### CRUDS
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Despesas (core da aplicação)
+- Cartão de crédito
+  - Nome, vencimento, fechamento da fatura
+  - Usado para alertar que alguma fatura está perto de vencer
+  - Usado para alertar que fatura ainda não foi registrada como paga
+- Teto de orçamento
+  - Valor total de entradas
+  - Informar quandos os gastos chegarem próximo ao teto
+  - Informar quando passar do teto
+- Meta de gastos
+  - Diferente do teto de orçamento
+    - Pois, aqui é uma meta que se pretende ter para gastos em geral
+  - Usado para calcular uma previsão de compras
+  - Pode ser dividido entre categorias
+    - Por exemplo:
+      - 4 mil de crédito (com a soma das compras em crédito)
+      - 300 reais de assinaturas (soma das assinaturas, netflix, spotify etc)
+      - 1000 de reservas de emergência (soma dos valores guardados)
+- Previsão de compra
+  - Valor da parcela
+  - Quantidade de parcela
+  - Indicar o melhor dia para efetuar a compra
 
-## Learn More
+### Actions
 
-To learn more about Next.js, take a look at the following resources:
+- Pagamento
+  - Faz:
+    - Incrementa as parcelas pagas
+    - Se fechar parcelas faz highlight de que se encerrou
+  - Tipos:
+    - Tela por vencimentos
+    - Tela por Cartões
+    - Pagamento individual
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Journey
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```mermaid
 
-## Deploy on Vercel
+flowchart TD
+  inicio((( Início )))
+  inicio --> configCartao([Configurar Cartão])
+  inicio --> configTeto([Configurar Teto
+    no Orçamento])
+  
+  subgraph Cartao
+    configCartao --> cartaoVencimento[Vencimento
+      Cartão]
+    configCartao --> cartaoNome[Nome do
+      Cartão]
+    configCartao --> cartaoMelhorDia[Melhor dia 
+      p/ compras]
+  end
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  subgraph Alertas
+    cartaoVencimento --> cartaoVencimentoDia{É dia de
+      vencimento do cartão}
+    cartaoVencimentoDia --> | Sim +- 3 dias | infoVencimento([Informar cartão
+      vencimento])
+    cartaoVencimentoDia --> | Não | fimAlertas(((fim)))
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    cartaoMelhorDia --> cartaoAlertaMelhorDia{É o melhor
+      dia de compra?
+      Fatura fechou?}
+    cartaoAlertaMelhorDia --> |Sim| infoFaturaCartao([Informar fatura
+      fechada. Solicitar
+      pagamento])
+    cartaoAlertaMelhorDia --> |Não| fimAlertas
+  end
+```
