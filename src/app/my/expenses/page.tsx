@@ -16,14 +16,14 @@ import { MOCK_NOTION_CSV } from "@/mocks/notionCsv";
 
 const dataTable = MOCK_NOTION_CSV.filter((f) => f.finished === false);
 
-export default function Page() {
+export default function Expenses() {
   return (
     <section>
       <header className="flex justify-between">
         <TitleSection>Despesas</TitleSection>
         <DefaultButton>Nova Despesa</DefaultButton>
       </header>
-      <main>
+      <main className="x'">
         <Table>
           <Thead>
             <Th>Valor da Parcela</Th>
@@ -65,8 +65,8 @@ export default function Page() {
                 <Td>
                   {data.currentInstallment} / {data.totalInstallment}
                 </Td>
-                <Td>{data.lastPaymentDate.toLocaleDateString()}</Td>
-                <Td>{data.purchaseDate.toLocaleDateString()}</Td>
+                <Td>{data.lastPaymentDate.toLocaleDateString("pt-BR")}</Td>
+                <Td>{data.purchaseDate.toLocaleDateString("pt-BR")}</Td>
                 <Td className="flex gap-1">
                   <PayButton />
                   <RemoveButton />
