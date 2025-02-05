@@ -46,14 +46,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run tests coverage
-        run : npm run test --coverage.enabled true
-      - name: 'Report Coverage'
-        # Set if: always() to also generate the report if tests are failing
-        # Only works if you set `reportOnFailure: true` in your vite config as specified above
-        if: always() 
-        uses:  davelosert/vitest-coverage-report-action@v2
+        run : npm run test
       - name: Build with Next.js
-        run: npx --no-install next build
+        run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
