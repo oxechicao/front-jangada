@@ -11,7 +11,7 @@ import {
   Thead,
   Tr,
 } from "@/components/ui/table";
-import { Money } from "@/components/ui/text";
+import { Money } from "@/components/elements/text";
 import { MOCK_NOTION_CSV } from "@/mocks/notionCsv";
 
 const dataTable = MOCK_NOTION_CSV.filter((f) => f.finished === false);
@@ -65,8 +65,8 @@ export default function Expenses() {
                 <Td>
                   {data.currentInstallment} / {data.totalInstallment}
                 </Td>
-                <Td>{data.lastPaymentDate.toLocaleDateString("pt-BR")}</Td>
-                <Td>{data.purchaseDate.toLocaleDateString("pt-BR")}</Td>
+                <Td>{data?.lastPaymentDate}</Td>
+                <Td>{data?.purchaseDate}</Td>
                 <Td className="flex gap-1">
                   <PayButton />
                   <RemoveButton />
