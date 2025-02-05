@@ -7,5 +7,15 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    coverage: {
+      thresholds: {
+        lines: 95,
+        branches: 95,
+        functions: 95,
+        statements: 95
+      },
+      reporter: ['text', 'json-summary', 'json'],
+      reportOnFailure: true,
+    }
   },
 })
