@@ -46,7 +46,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run tests coverage
-        run : npm run vitest --coverage.enabled true
+        run : npm run test --coverage.enabled true
       - name: 'Report Coverage'
         # Set if: always() to also generate the report if tests are failing
         # Only works if you set `reportOnFailure: true` in your vite config as specified above
