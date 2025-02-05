@@ -8,13 +8,15 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     coverage: {
+      enabled: true,
+      provider: 'istanbul',
       thresholds: {
         lines: 95,
         branches: 95,
         functions: 95,
         statements: 95
       },
-      reporter: ['text', 'json-summary', 'json'],
+      reporter: ['text', 'json', 'json-summary', 'html'],
       reportOnFailure: true,
     }
   },
