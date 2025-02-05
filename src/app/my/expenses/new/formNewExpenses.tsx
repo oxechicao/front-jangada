@@ -1,4 +1,4 @@
-import { TextInput } from "@/components/ui/text/TextInput";
+import { TextInput } from "@/components/elements/forms/TextInput";
 
 export const FormNewExpenses = () => {
   return (
