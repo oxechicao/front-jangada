@@ -1,18 +1,21 @@
 import { Input } from "@/components/ui/forms";
-import { useId } from "react";
+import { dir } from "console";
+import { HtmlHTMLAttributes, useId } from "react";
 
-interface TextInput {
+interface TextInput extends Partial<HTMLInputElement> {
   label: string;
+  direction?: "row" | "column";
 }
 
-export const TextInput = ({ label }: TextInput) => {
+export const TextInput = ({ label, direction, ...props }: TextInput) => {
   const inputId = useId();
+  const classDirection = direction === "column" ? "flex-col" : "items-center";
   return (
-    <div className="flex flex-col gap-3">
+    <div className={`flex gap-3 ${classDirection}`}>
       <label className="ml-3" htmlFor={inputId}>
         {label}
       </label>
-      <Input id={inputId} />
+      <Input id={inputId} {...props} />
     </div>
   );
 };

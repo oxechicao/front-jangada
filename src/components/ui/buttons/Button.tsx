@@ -1,15 +1,23 @@
 import React from "react";
 
-type Button = {
+export interface Button {
   children: React.ReactNode;
   className?: string;
-  onClick?: () => void;
-};
-export function Button({ children, onClick, className }: Button) {
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  type?: HTMLButtonElement["type"];
+}
+
+export function Button({
+  children,
+  onClick,
+  className,
+  type = "button",
+}: Button) {
   return (
     <button
+      type={type}
       onClick={onClick}
-      className={`px-4 py-2 border rounded-xl ${className}`}
+      className={`px-4 py-1 border rounded-xl h-9 ${className}`}
     >
       {children}
     </button>

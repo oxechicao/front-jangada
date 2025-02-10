@@ -11,4 +11,8 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  
+  .default-input-color {
+    /* focus:border-teal-500 border-fuchsia-400 */
+  }
 }

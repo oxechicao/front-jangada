@@ -1,9 +1,26 @@
 import React from "react";
 
-type Form = {
+export interface FormInterface {
+  direction?: "row" | "column";
+  className?: string;
   children: React.ReactNode;
-  onSubmit: () => void;
-};
-export const Form = ({ children, onSubmit }: Form) => {
-  return <form onSubmit={onSubmit}>{children}</form>;
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
+}
+
+export const Form = ({
+  children,
+  onSubmit,
+  direction = "column",
+  ...props
+}: FormInterface) => {
+  const classDirection = direction === "column" ? "flex-col" : "items-end";
+  return (
+    <form
+      {...props}
+      onSubmit={onSubmit}
+      className={`flex gap-6 ${classDirection}`}
+    >
+      {children}
+    </form>
+  );
 };
