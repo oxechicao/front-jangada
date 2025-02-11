@@ -1,4 +1,4 @@
-import { FormNewCategory } from "@/app/category/components/form/FormNewCategory";
+import { FormNewCategory } from "@/app/[lang]/category/components/form/FormNewCategory";
 import { Card } from "@/components/elements/card/Card";
 import { H2 } from "@/components/ui/text/H2";
 
