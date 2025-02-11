@@ -1,75 +1,33 @@
 # Jangada Project
 
 - [Jangada Project](#jangada-project)
-  - [Dados](#dados)
+  - [TODO](#todo)
   - [Funcionalidades](#funcionalidades)
     - [CRUDS](#cruds)
     - [Actions](#actions)
     - [Journey](#journey)
+  - [Dados](#dados)
 
-## Dados
+## TODO
 
 ```mermaid
-erDiagram
-  EXPENSES {
-    uuid _id
-    string name
-    number value
-    number currentInstallment
-    number totalInstallments
-    date purchaseDate
-    date paymentDate
-    date createdAt
-    date updatedAt
-    uuid[] tags
-  }
+mindmap
+  Karteira
+    Orçamento
+      Valor máximo
+      Valor desejado
+      Metas
+        Por categoria
+    Categoria
+      Tipos
+        Forma de pagamento (A vista/parcelado)
+        Cartões
+        Departaments
+    Cartões
+      Limite
+      Vencimento
 
-  CARD {
-    uuid _id
-    string name
-    uuif idTag FK
-  }
 
-  TAG {
-    uuid _id
-    string name
-    uuid idCategory FK
-  }
-
-  CATEGORY {
-    uuid _id
-    string name
-  }
-
-  CATEGORIES {
-    enum paymentMethod
-    enum paymentForm
-    enum paymentOrigin
-    enum department
-    enum creditCard
-  }
-
-  GOAL {
-    uuid _id
-    uuid idTags FK
-  }
-
-  USER {
-    uuid _id
-    string email
-    string token
-  }
-
-  EXPENSES }|--|{ TAG : "bocado"
-  CATEGORY ||--|| CATEGORIES : "tem um"
-  TAG ||--|{ CATEGORY : "tem várias"
-  CARD ||--|| TAG : "TAG ===     "
-  GOAL }|--|{ TAG : "exceto department"
-
-  USER ||--|{ EXPENSES : "possui"
-  USER ||--|{ CATEGORY : "possui"
-  USER ||--|{ TAG : "possui"
-  USER ||--|{ GOAL : "possui"
 ```
 
 ## Funcionalidades
@@ -144,4 +102,69 @@ flowchart TD
       pagamento])
     cartaoAlertaMelhorDia --> |Não| fimAlertas
   end
+```
+
+## Dados
+
+```mermaid
+erDiagram
+  EXPENSES {
+    uuid _id
+    string name
+    number value
+    number currentInstallment
+    number totalInstallments
+    date purchaseDate
+    date paymentDate
+    date createdAt
+    date updatedAt
+    uuid[] tags
+  }
+
+  CARD {
+    uuid _id
+    string name
+    uuif idTag FK
+  }
+
+  TAG {
+    uuid _id
+    string name
+    uuid idCategory FK
+  }
+
+  CATEGORY {
+    uuid _id
+    string name
+  }
+
+  CATEGORIES {
+    enum paymentMethod
+    enum paymentForm
+    enum paymentOrigin
+    enum department
+    enum creditCard
+  }
+
+  GOAL {
+    uuid _id
+    uuid idTags FK
+  }
+
+  USER {
+    uuid _id
+    string email
+    string token
+  }
+
+  EXPENSES }|--|{ TAG : "bocado"
+  CATEGORY ||--|| CATEGORIES : "tem um"
+  TAG ||--|{ CATEGORY : "tem várias"
+  CARD ||--|| TAG : "TAG ===     "
+  GOAL }|--|{ TAG : "exceto department"
+
+  USER ||--|{ EXPENSES : "possui"
+  USER ||--|{ CATEGORY : "possui"
+  USER ||--|{ TAG : "possui"
+  USER ||--|{ GOAL : "possui"
 ```
