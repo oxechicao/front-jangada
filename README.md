@@ -14,9 +14,11 @@
 mindmap
   Karteira
     Orçamento
-      Valor máximo
-      Valor desejado
+      Valor máximo mensal
+      Nova compra
+        Verificar se passará tas metas
       Metas
+        Valor desejado mensal
         Por categoria
     Categoria
       Tipos
