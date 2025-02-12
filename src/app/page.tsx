@@ -1,4 +1,4 @@
-import { RootLayoutProps } from "@/app/[lang]/layout";
+import { RootLayoutProps } from "@/app/layout";
 import { Container } from "@/components/ui/container/Container";
 import { A, H1 } from "@/components/ui";
 import I18n from "@/components/ui/i18n/i18n";

@@ -1,5 +1,5 @@
-import { FormNewCategory } from "@/app/[lang]/category/components/form/FormNewCategory";
-import { CategoryList } from "@/app/[lang]/category/components/list/CategoryList";
+import { FormNewCategory } from "@/app/category/components/form/FormNewCategory";
+import { CategoryList } from "@/app/category/components/list/CategoryList";
 import { Card } from "@/components/elements/card/Card";
 import I18n from "@/components/ui/i18n/i18n";
 import { H2 } from "@/components/ui/text/H2";
