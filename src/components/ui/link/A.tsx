@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface AProps {
@@ -5,14 +6,20 @@ interface AProps {
   href: string;
   target?: "_blank";
   rel?: string;
+  className?: string;
 }
-export function A({ children, href, target, rel }: AProps) {
+export function A({ children, href, target, rel, className }: AProps) {
   const isExternal = /^(http|https):\/\//.test(href.trim());
   const _target = isExternal ? "_blank" : target;
   const _rel = isExternal ? "external noopener" : rel;
   return (
-    <a href={href} target={_target} rel={_rel} className="underline">
+    <Link
+      href={href}
+      target={_target}
+      rel={_rel}
+      className={`${className || "underline"}`}
+    >
       {children}
-    </a>
+    </Link>
   );
 }

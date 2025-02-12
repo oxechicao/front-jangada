@@ -1,3 +1,4 @@
+import { A } from "@/components/ui/link";
 import React from "react";
 
 type LinkHeader = {
@@ -6,8 +7,8 @@ type LinkHeader = {
 };
 export function LinkHeader({ href = "#", children }: LinkHeader) {
   return (
-    <a className="text-white p-3" href={href}>
+    <A className="text-white p-3" href={href}>
       {children}
-    </a>
+    </A>
   );
 }
