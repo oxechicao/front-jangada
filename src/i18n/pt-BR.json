@@ -3,5 +3,11 @@
   "about": "Projeto Jangada consiste em uma aplição para gerencia de despesas e planejamentos futuros. É um projeto de código aberto feito com objetivos de estudos e prática.",
   "category": {
     "title": "Categoria"
+  },
+  "department": {
+    "title": "Departamento"
+  },
+  "expense": {
+    "title": "Despesas"
   }
 }
