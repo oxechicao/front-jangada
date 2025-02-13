@@ -34,7 +34,7 @@ const tagsMethod = ["Mensalidade", "A Vista", "Parcelado", "Planejamento"];
 const tagsForm = ["Crédito", "Débito", "Dinheiro", "Pix", "Transferência"];
 const tagsOrigin = ["Itau", "Inter", "Nubank", "Irmão"];
 
-export const mockTagsByCategory = {
+export const mockTagsByCategory: Record<string, Tag[]> = {
   [CATEGORIES.DEPARTMENT]: tagsDepartments.map((tag, index) => ({
     _id: index.toString(),
     name: tag,

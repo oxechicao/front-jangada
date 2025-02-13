@@ -1,11 +1,18 @@
 import { FormNew } from "@/app/expensies/components/form/FormNew";
-import { Money } from "@/components/elements";
+import { DefaultButton, Money } from "@/components/elements";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@/components/ui";
 import DateTimeComponent from "@/components/ui/date/DateTime";
 import mockExpensies from "@/mocks/expensies.mock";
 import { CATEGORIES } from "@/types/enum/Categories.enum";
 import mockTagsByCategory from "@/mocks/tag.mock";
+import Select from "@/components/ui/forms/Select";
+import { useExpenseTable } from "@/app/expensies/components/list/useExpenseTable";
+
+
+
 export default function ExpenseTableList() {
+  const { mapOptions } = useExpenseTable();
+
   return (
     <>
       <div className="mb-5">
@@ -37,30 +44,38 @@ export default function ExpenseTableList() {
                 {expense.installment.current}/{expense.installment.total}
               </Td>
               <Td>
-                <select name="" id="" className="bg-transparent p-1">
-                  {mockTagsByCategory[CATEGORIES.PAYMENT_FORM].map((tag) => (
-                    <option
-                      key={tag._id}
-                      value={tag._id}
-                      {...(expense.tags[CATEGORIES.PAYMENT_FORM].name ===
-                        tag.name && { selected: true })}
-                    >
-                      {tag.name}
-                    </option>
-                  ))}
-                </select>
-                {/* {expense.tags[CATEGORIES.PAYMENT_FORM].name} */}
+                <Select 
+                  name="paymentForm" 
+                  options={mapOptions(mockTagsByCategory[CATEGORIES.PAYMENT_FORM], expense.tags[CATEGORIES.PAYMENT_FORM]._id)} 
+                />
               </Td>
-              <Td>{expense.tags[CATEGORIES.PAYMENT_METHOD].name}</Td>
-              <Td>{expense.tags[CATEGORIES.DEPARTMENT].name}</Td>
-              <Td>{expense.tags[CATEGORIES.PAYMENT_ORIGIN].name}</Td>
+              <Td>
+              <Select 
+                  name="paymentMethod" 
+                  options={mapOptions(mockTagsByCategory[CATEGORIES.PAYMENT_METHOD], expense.tags[CATEGORIES.PAYMENT_METHOD]._id)} 
+                />
+              </Td>
+              <Td>
+              <Select 
+                  name="department" 
+                  options={mapOptions(mockTagsByCategory[CATEGORIES.DEPARTMENT], expense.tags[CATEGORIES.DEPARTMENT]._id)} 
+                />
+              </Td>
+              <Td>
+              <Select 
+                  name="paymentOrigin" 
+                  options={mapOptions(mockTagsByCategory[CATEGORIES.PAYMENT_ORIGIN], expense.tags[CATEGORIES.PAYMENT_ORIGIN]._id)} 
+                />
+              </Td>
               <Td>
                 <DateTimeComponent
                   date={expense.timeline.lastPaymentAt}
                   format="date"
                 />
               </Td>
-              <Td>Actions</Td>
+              <Td>
+                <DefaultButton> PAGAR </DefaultButton>
+              </Td>
             </Tr>
           ))}
         </Tbody>
