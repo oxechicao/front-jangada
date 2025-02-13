@@ -1,14 +1,12 @@
-import { Locales } from "@/dictionaries";
+import { getDictionary, Locales } from "@/dictionaries";
 
 export default function I18n({
   value,
-  dictionary,
 }: Readonly<{
   value: string;
   lang?: Locales;
-  dictionary: Record<string, any>;
 }>) {
+  const dictionary: Record<string, {}> = getDictionary("pt-BR");
   const text = value.split(".").reduce((result, k) => result?.[k], dictionary);
-
   return <>{text || ""}</>;
 }
