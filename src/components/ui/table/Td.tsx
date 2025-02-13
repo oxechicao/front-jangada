@@ -7,7 +7,7 @@ interface TableCell extends ComponentPropsWithoutRef<"td"> {
 
 export const Td = ({ children, ...rest }: TableCell) => {
   return (
-    <td className="text-center" {...rest}>
+    <td className="text-center h-10" {...rest}>
       {children}
     </td>
   );

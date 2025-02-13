@@ -9,7 +9,7 @@ type Inputs = {
   name: string;
 };
 
-export function FormNewCategory({ inline = false }: { inline?: boolean }) {
+export function FormNew({ inline = false }: { inline?: boolean }) {
   const {
     register,
     handleSubmit,

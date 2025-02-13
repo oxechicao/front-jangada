@@ -7,8 +7,9 @@ export function Header() {
       <div className="flex w-full justify-between items-center p-4">
         <H1>Karteira</H1>
         <nav className="flex gap-4">
-          <LinkHeader href="/">Home</LinkHeader>
-          <LinkHeader href="/category">Categoria</LinkHeader>
+          <LinkHeader href="/">Início</LinkHeader>
+          <LinkHeader href="/expensies">Despesas</LinkHeader>
+          <LinkHeader href="/department">Departamentos</LinkHeader>
         </nav>
       </div>
     </header>
