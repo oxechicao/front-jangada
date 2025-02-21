@@ -79,13 +79,13 @@ flowchart TD
   inicio --> configCartao([Configurar Cartão])
   inicio --> configTeto([Configurar Teto
     no Orçamento])
-  
+
   subgraph Cartao
     configCartao --> cartaoVencimento[Vencimento
       Cartão]
     configCartao --> cartaoNome[Nome do
       Cartão]
-    configCartao --> cartaoMelhorDia[Melhor dia 
+    configCartao --> cartaoMelhorDia[Melhor dia
       p/ compras]
   end
 

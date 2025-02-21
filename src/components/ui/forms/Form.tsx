@@ -13,12 +13,13 @@ export const Form = ({
   direction = "column",
   ...props
 }: FormInterface) => {
-  const classDirection = direction === "column" ? "flex-col" : "items-end";
+  const classDirection =
+    direction === "column" ? "flex-col items-center" : "items-end";
   return (
     <form
       {...props}
       onSubmit={onSubmit}
-      className={`flex gap-6 ${classDirection}`}
+      className={`flex gap-3 ${classDirection}`}
     >
       {children}
     </form>

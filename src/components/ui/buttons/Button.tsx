@@ -17,7 +17,7 @@ export function Button({
     <button
       type={type}
       onClick={onClick}
-      className={`px-4 py-1 border rounded-xl ${className}`}
+      className={`px-4 py-2 border rounded-sm ${className}`}
     >
       {children}
     </button>

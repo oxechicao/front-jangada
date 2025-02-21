@@ -5,7 +5,7 @@ export function DefaultButton(props: Button) {
   return (
     <Button
       onClick={props.onClick}
-      className="hover:border-fuchsia-400 hover:text-fuchsia-400 border-neutral-200 text-neutral-200 text-xs"
+      className="bg-fuchsia-500 border-fuchsia-500 text-white font-bold text-xs hover:bg-fuchsia-400 hover:border-fuchsia-400"
     >
       {props.children}
     </Button>

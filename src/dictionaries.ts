@@ -1,5 +1,3 @@
-import "server-only";
-
 export type Locales = "en-US" | "pt-BR";
 
 const enUS = require("./i18n/en-US.json");

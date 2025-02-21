@@ -1,5 +1,5 @@
-import { FormNew } from "@/app/department/components/form/FormNew";
-import { TableList } from "@/app/department/components/list/TableList";
+import { DepartmentForm } from "@/app/department/_components/form/DepartmentForm";
+import { TableList } from "@/app/department/_components/list/TableList";
 import { DefaultPage } from "@/components/elements/layouts/DefaultPage";
 import { Locale } from "@/i18n-config";
 
@@ -12,7 +12,7 @@ export default async function Page(props: {
       actions={
         <div className="bg-neutral-800 py-3 px-6">
           <p className="font-bold pl-3">Adicionar nova departamento</p>
-          <FormNew inline />
+          <DepartmentForm inline />
         </div>
       }
       tableList={<TableList />}

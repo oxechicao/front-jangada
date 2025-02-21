@@ -23,7 +23,7 @@ function fabricExpensies(index: number) {
       lastPaymentAt: dateTime.plus({ days: index + 1 }).toJSDate(),
       purchaseAt: dateTime.toJSDate(),
       paymentsAt: Array.from({ length: diffDays }, (_, i) =>
-        dateTime.plus({ days: i + 1 }).toJSDate()
+        dateTime.plus({ days: i + 1 }).toJSDate(),
       ),
     },
     installment: {
@@ -45,7 +45,7 @@ function fabricExpensies(index: number) {
 }
 
 const mockExpensies: Expenses[] = Array.from({ length: 100 }, (_, i) =>
-  fabricExpensies(i)
+  fabricExpensies(i),
 );
 
 export default mockExpensies;

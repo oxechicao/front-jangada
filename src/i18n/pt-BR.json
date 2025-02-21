@@ -9,5 +9,13 @@
   },
   "expense": {
     "title": "Despesas"
+  },
+  "form": {
+    "name": "Nome",
+    "department": "Departamento",
+    "paymentForm": "Forma Pag.",
+    "paymentMethod": "Método Pag.",
+    "paymentOrigin": "Método Pag.",
+    "value": "Valor"
   }
 }

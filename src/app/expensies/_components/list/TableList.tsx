@@ -1,4 +1,3 @@
-import { FormNew } from "@/app/expensies/components/form/FormNew";
 import { DefaultButton, Money } from "@/components/elements";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@/components/ui";
 import DateTimeComponent from "@/components/ui/date/DateTime";
@@ -6,9 +5,8 @@ import mockExpensies from "@/mocks/expensies.mock";
 import { CATEGORIES } from "@/types/enum/Categories.enum";
 import mockTagsByCategory from "@/mocks/tag.mock";
 import Select from "@/components/ui/forms/Select";
-import { useExpenseTable } from "@/app/expensies/components/list/useExpenseTable";
-
-
+import useExpenseTable from "@/app/expensies/_components/list/useExpenseTable";
+import FormNew from "@/app/expensies/_components/form/FormNew";
 
 export default function ExpenseTableList() {
   const { mapOptions } = useExpenseTable();
@@ -44,27 +42,43 @@ export default function ExpenseTableList() {
                 {expense.installment.current}/{expense.installment.total}
               </Td>
               <Td>
-                <Select 
-                  name="paymentForm" 
-                  options={mapOptions(mockTagsByCategory[CATEGORIES.PAYMENT_FORM], expense.tags[CATEGORIES.PAYMENT_FORM]._id)} 
+                <Select
+                  name="paymentForm"
+                  defaultValue={expense.tags[CATEGORIES.PAYMENT_FORM]._id}
+                  optionsValues={mapOptions(
+                    mockTagsByCategory[CATEGORIES.PAYMENT_FORM],
+                    expense.tags[CATEGORIES.PAYMENT_FORM]._id,
+                  )}
                 />
               </Td>
               <Td>
-              <Select 
-                  name="paymentMethod" 
-                  options={mapOptions(mockTagsByCategory[CATEGORIES.PAYMENT_METHOD], expense.tags[CATEGORIES.PAYMENT_METHOD]._id)} 
+                <Select
+                  name="paymentMethod"
+                  defaultValue={expense.tags[CATEGORIES.PAYMENT_FORM]._id}
+                  optionsValues={mapOptions(
+                    mockTagsByCategory[CATEGORIES.PAYMENT_METHOD],
+                    expense.tags[CATEGORIES.PAYMENT_METHOD]._id,
+                  )}
                 />
               </Td>
               <Td>
-              <Select 
-                  name="department" 
-                  options={mapOptions(mockTagsByCategory[CATEGORIES.DEPARTMENT], expense.tags[CATEGORIES.DEPARTMENT]._id)} 
+                <Select
+                  name="department"
+                  defaultValue={expense.tags[CATEGORIES.PAYMENT_FORM]._id}
+                  optionsValues={mapOptions(
+                    mockTagsByCategory[CATEGORIES.DEPARTMENT],
+                    expense.tags[CATEGORIES.DEPARTMENT]._id,
+                  )}
                 />
               </Td>
               <Td>
-              <Select 
-                  name="paymentOrigin" 
-                  options={mapOptions(mockTagsByCategory[CATEGORIES.PAYMENT_ORIGIN], expense.tags[CATEGORIES.PAYMENT_ORIGIN]._id)} 
+                <Select
+                  name="paymentOrigin"
+                  defaultValue={expense.tags[CATEGORIES.PAYMENT_FORM]._id}
+                  optionsValues={mapOptions(
+                    mockTagsByCategory[CATEGORIES.PAYMENT_ORIGIN],
+                    expense.tags[CATEGORIES.PAYMENT_ORIGIN]._id,
+                  )}
                 />
               </Td>
               <Td>

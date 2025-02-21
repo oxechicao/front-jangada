@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/ui";
-import { Locales } from "@/dictionaries";
+import { getDictionary, Locales } from "@/dictionaries";
+import { DictionaryProvider } from "@/app/_context/DictionaryContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,13 +24,15 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ lang: Locales }>;
 }>) {
+  const dictionary: Record<string, {}> = getDictionary("pt-BR");
   return (
     <html lang="pt-BR">
-      <head></head>
       <body>
         <Header />
         <main className="bg-neutral-900 p-16 flex min-h-screen  align-middle justify-center">
-          {children}
+          <DictionaryProvider dictionary={dictionary}>
+            {children}
+          </DictionaryProvider>
         </main>
         <footer></footer>
       </body>

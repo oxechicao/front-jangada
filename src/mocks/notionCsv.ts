@@ -17114,7 +17114,7 @@ export const MOCK_NOTION_CSV = [
     totalInstallment: data.totalInstallment,
     lastPaymentDate: DateTime.fromFormat(
       data.lastPaymentDate,
-      "dd/mm/yyyy"
+      "dd/mm/yyyy",
     ).toISO(),
     // new Date(
     //   `${data.lastPaymentDate.split("/").reverse().join("-")} 01:00:00`

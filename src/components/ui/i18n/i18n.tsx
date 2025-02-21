@@ -1,4 +1,8 @@
-import { getDictionary, Locales } from "@/dictionaries";
+"use client";
+
+import { DictionaryContext } from "@/app/_context/DictionaryContext";
+import { Locales } from "@/dictionaries";
+import { useContext } from "react";
 
 export default function I18n({
   value,
@@ -6,7 +10,7 @@ export default function I18n({
   value: string;
   lang?: Locales;
 }>) {
-  const dictionary: Record<string, {}> = getDictionary("pt-BR");
+  const { dictionary } = useContext(DictionaryContext);
   const text = value.split(".").reduce((result, k) => result?.[k], dictionary);
   return <>{text || ""}</>;
 }

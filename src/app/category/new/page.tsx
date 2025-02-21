@@ -1,5 +1,5 @@
 import { FormNewCategory } from "@/app/category/components/form/FormNewCategory";
-import { Card } from "@/components/elements/card/Card";
+import { Card } from "@/components/ui/card/Card";
 import { H2 } from "@/components/ui/text/H2";
 
 export default function NewCategoryPage() {

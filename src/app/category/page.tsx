@@ -1,5 +1,5 @@
-import { FormNewCategory } from "@/app/category/components/form/FormNewCategory";
-import { CategoryList } from "@/app/category/components/list/CategoryList";
+import { FormNewCategory } from "@/app/category/_components/form/FormNewCategory";
+import { CategoryList } from "@/app/category/_components/list/CategoryList";
 import { DefaultPage } from "@/components/elements/layouts/DefaultPage";
 import { Locale } from "@/i18n-config";
 

@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 body {
-  color: theme('colors.white');
-  background-color: theme('colors.neutral.950');
+  color: theme("colors.white");
+  background-color: theme("colors.neutral.950");
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .default-input-color {
     /* focus:border-teal-500 border-fuchsia-400 */
   }

@@ -16,8 +16,8 @@ export function Card({
     type === "outlined"
       ? "border bg-transparent"
       : type === "transparent"
-      ? "bg-transparent border-none"
-      : "bg-neutral-800 border-neutral-900 border-2";
+        ? "bg-transparent border-none"
+        : "bg-neutral-800 border-neutral-900 border-2";
   return (
     <div className={` rounded-lg ${classSize} ${classType} ${className}`}>
       {children}

@@ -1,6 +1,6 @@
 "use client";
 
-import { TextInput } from "@/components/elements/forms/TextInput";
+import { TextInput } from "@/components/ui/forms/TextInput";
 import { Form } from "@/components/ui/forms";
 
 export const FormNewCard = () => {
